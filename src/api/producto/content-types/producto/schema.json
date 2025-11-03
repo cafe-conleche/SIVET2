@@ -43,12 +43,15 @@
       "relation": "oneToMany",
       "target": "api::item-factura.item-factura",
       "mappedBy": "producto"
+<<<<<<< HEAD
     },
     "consumo_citas": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::consumo-cita.consumo-cita",
       "mappedBy": "producto"
+=======
+>>>>>>> 6fed5ba0a60be141ef22aee9ac89a9c67d1eda08
     }
   }
 }
