@@ -45,6 +45,12 @@
       "relation": "manyToOne",
       "target": "api::factura.factura",
       "inversedBy": "item_facturas"
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "item_facturas"
     }
   }
 }

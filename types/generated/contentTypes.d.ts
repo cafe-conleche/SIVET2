@@ -676,6 +676,7 @@ export interface ApiItemFacturaItemFactura extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     precio_unitario: Schema.Attribute.Decimal;
+    producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
     publishedAt: Schema.Attribute.DateTime;
     subtotal: Schema.Attribute.Decimal;
     tipo: Schema.Attribute.Enumeration<['producto', 'servicio']>;
@@ -748,6 +749,10 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text;
+    item_facturas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::item-factura.item-factura'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
