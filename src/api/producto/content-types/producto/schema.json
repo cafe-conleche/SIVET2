@@ -37,6 +37,18 @@
       "relation": "oneToMany",
       "target": "api::stock.stock",
       "mappedBy": "producto"
+    },
+    "item_facturas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item-factura.item-factura",
+      "mappedBy": "producto"
+    },
+    "consumo_citas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::consumo-cita.consumo-cita",
+      "mappedBy": "producto"
     }
   }
 }

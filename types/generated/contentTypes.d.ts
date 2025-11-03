@@ -476,6 +476,10 @@ export interface ApiCitaCita extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::colaborador.colaborador'
     >;
+    consumo_citas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consumo-cita.consumo-cita'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -568,6 +572,37 @@ export interface ApiColaboradorColaborador extends Struct.CollectionTypeSchema {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiConsumoCitaConsumoCita extends Struct.CollectionTypeSchema {
+  collectionName: 'consumo_citas';
+  info: {
+    displayName: 'Consumo_cita';
+    pluralName: 'consumo-citas';
+    singularName: 'consumo-cita';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cantidad: Schema.Attribute.Decimal;
+    cita: Schema.Attribute.Relation<'manyToOne', 'api::cita.cita'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consumo-cita.consumo-cita'
+    > &
+      Schema.Attribute.Private;
+    precio_unitario: Schema.Attribute.Decimal;
+    producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -676,6 +711,7 @@ export interface ApiItemFacturaItemFactura extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     precio_unitario: Schema.Attribute.Decimal;
+    producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
     publishedAt: Schema.Attribute.DateTime;
     subtotal: Schema.Attribute.Decimal;
     tipo: Schema.Attribute.Enumeration<['producto', 'servicio']>;
@@ -744,10 +780,18 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::categoria-producto.categoria-producto'
     >;
+    consumo_citas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consumo-cita.consumo-cita'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text;
+    item_facturas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::item-factura.item-factura'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1376,6 +1420,7 @@ declare module '@strapi/strapi' {
       'api::cita.cita': ApiCitaCita;
       'api::cliente.cliente': ApiClienteCliente;
       'api::colaborador.colaborador': ApiColaboradorColaborador;
+      'api::consumo-cita.consumo-cita': ApiConsumoCitaConsumoCita;
       'api::factura.factura': ApiFacturaFactura;
       'api::historial-medico.historial-medico': ApiHistorialMedicoHistorialMedico;
       'api::item-factura.item-factura': ApiItemFacturaItemFactura;

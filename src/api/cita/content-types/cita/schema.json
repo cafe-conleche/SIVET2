@@ -54,6 +54,12 @@
       "relation": "oneToMany",
       "target": "api::item-factura.item-factura",
       "mappedBy": "cita"
+    },
+    "consumo_citas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::consumo-cita.consumo-cita",
+      "mappedBy": "cita"
     }
   }
 }

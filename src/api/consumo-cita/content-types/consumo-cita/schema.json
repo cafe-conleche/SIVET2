@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consumo_citas",
+  "info": {
+    "singularName": "consumo-cita",
+    "pluralName": "consumo-citas",
+    "displayName": "Consumo_cita"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cantidad": {
+      "type": "decimal"
+    },
+    "precio_unitario": {
+      "type": "decimal"
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "consumo_citas"
+    },
+    "cita": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cita.cita",
+      "inversedBy": "consumo_citas"
+    }
+  }
+}
