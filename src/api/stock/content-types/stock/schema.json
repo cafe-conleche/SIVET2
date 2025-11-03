@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stocks",
+  "info": {
+    "singularName": "stock",
+    "pluralName": "stocks",
+    "displayName": "Stock"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cantidad_actual": {
+      "type": "decimal"
+    },
+    "stock_minimo": {
+      "type": "decimal"
+    },
+    "lote": {
+      "type": "string"
+    },
+    "fecha_vencimiento": {
+      "type": "date"
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "stocks"
+    }
+  }
+}

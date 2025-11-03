@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "item_facturas",
+  "info": {
+    "singularName": "item-factura",
+    "pluralName": "item-facturas",
+    "displayName": "Item_factura"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "producto",
+        "servicio"
+      ]
+    },
+    "cantidad": {
+      "type": "integer",
+      "default": 1
+    },
+    "precio_unitario": {
+      "type": "decimal"
+    },
+    "descuento": {
+      "type": "decimal"
+    },
+    "subtotal": {
+      "type": "decimal"
+    },
+    "descripcion": {
+      "type": "string"
+    },
+    "cita": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cita.cita",
+      "inversedBy": "item_facturas"
+    },
+    "factura": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::factura.factura",
+      "inversedBy": "item_facturas"
+    }
+  }
+}

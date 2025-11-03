@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "colaboradors",
+  "info": {
+    "singularName": "colaborador",
+    "pluralName": "colaboradors",
+    "displayName": "Colaborador"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "datos_personales": {
+      "type": "component",
+      "component": "personas.persona",
+      "repeatable": false,
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "citas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cita.cita",
+      "mappedBy": "colaborador"
+    },
+    "facturas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::factura.factura",
+      "mappedBy": "colaborador"
+    }
+  }
+}

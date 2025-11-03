@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "facturas",
+  "info": {
+    "singularName": "factura",
+    "pluralName": "facturas",
+    "displayName": "Factura"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "numeroFactura": {
+      "type": "uid"
+    },
+    "fecha_emision": {
+      "type": "datetime"
+    },
+    "metodo_pago": {
+      "type": "enumeration",
+      "enum": [
+        "efectivo",
+        "tarjeta",
+        "transferencia"
+      ]
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "pendiente",
+        "pagada",
+        "anulada"
+      ]
+    },
+    "subtotal": {
+      "type": "decimal"
+    },
+    "impuesto": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "observaciones": {
+      "type": "text"
+    },
+    "cliente": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cliente.cliente",
+      "inversedBy": "facturas"
+    },
+    "colaborador": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::colaborador.colaborador",
+      "inversedBy": "facturas"
+    },
+    "item_facturas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item-factura.item-factura",
+      "mappedBy": "factura"
+    }
+  }
+}

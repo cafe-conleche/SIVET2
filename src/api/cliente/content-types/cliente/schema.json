@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clientes",
+  "info": {
+    "singularName": "cliente",
+    "pluralName": "clientes",
+    "displayName": "Cliente"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "datos_personales": {
+      "type": "component",
+      "component": "personas.persona",
+      "repeatable": false,
+      "required": true
+    },
+    "mascotas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mascota.mascota",
+      "mappedBy": "cliente"
+    },
+    "facturas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::factura.factura",
+      "mappedBy": "cliente"
+    }
+  }
+}

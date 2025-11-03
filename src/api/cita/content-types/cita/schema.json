@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "citas",
+  "info": {
+    "singularName": "cita",
+    "pluralName": "citas",
+    "displayName": "Cita"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fecha_programada": {
+      "type": "datetime"
+    },
+    "motivo": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "enumeration",
+      "default": "programada",
+      "enum": [
+        "programada",
+        "en-curso",
+        "atendida",
+        "cancelada",
+        "no-asistio"
+      ]
+    },
+    "notas": {
+      "type": "blocks"
+    },
+    "mascota": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mascota.mascota",
+      "inversedBy": "citas"
+    },
+    "colaborador": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::colaborador.colaborador",
+      "inversedBy": "citas"
+    },
+    "servicios": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::servicio.servicio",
+      "inversedBy": "citas"
+    },
+    "item_facturas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item-factura.item-factura",
+      "mappedBy": "cita"
+    }
+  }
+}

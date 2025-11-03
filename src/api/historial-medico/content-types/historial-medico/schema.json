@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "historial_medicos",
+  "info": {
+    "singularName": "historial-medico",
+    "pluralName": "historial-medicos",
+    "displayName": "Historial_medico"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mascota": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mascota.mascota",
+      "inversedBy": "historial_medico"
+    },
+    "enfermedades_cronicas": {
+      "type": "string"
+    },
+    "notas_generales": {
+      "type": "blocks"
+    },
+    "fecha_creacion": {
+      "type": "datetime"
+    },
+    "ultima_actualizacion": {
+      "type": "datetime"
+    }
+  }
+}

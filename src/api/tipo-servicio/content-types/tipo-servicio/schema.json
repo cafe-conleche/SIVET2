@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipo_servicios",
+  "info": {
+    "singularName": "tipo-servicio",
+    "pluralName": "tipo-servicios",
+    "displayName": "Tipo_servicio"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "blocks"
+    },
+    "servicios": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::servicio.servicio",
+      "mappedBy": "tipo_servicio"
+    }
+  }
+}
