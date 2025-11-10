@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "movimiento_stocks",
+  "info": {
+    "singularName": "movimiento-stock",
+    "pluralName": "movimiento-stocks",
+    "displayName": "Movimiento_stock"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fecha": {
+      "type": "datetime"
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "entrada",
+        "salida",
+        "ajuste"
+      ]
+    },
+    "cantidad": {
+      "type": "decimal"
+    },
+    "comentario": {
+      "type": "text"
+    },
+    "stock": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stock.stock",
+      "inversedBy": "movimiento_stocks"
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "movimiento_stocks"
+    },
+    "compra": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::compra.compra",
+      "inversedBy": "movimiento_stocks"
+    }
+  }
+}

@@ -575,6 +575,54 @@ export interface ApiColaboradorColaborador extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCompraCompra extends Struct.CollectionTypeSchema {
+  collectionName: 'compras';
+  info: {
+    displayName: 'Compra';
+    pluralName: 'compras';
+    singularName: 'compra';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    estado: Schema.Attribute.Enumeration<
+      ['pendiente', 'recibido', 'cancelado']
+    >;
+    fecha: Schema.Attribute.DateTime;
+    impuesto: Schema.Attribute.Decimal;
+    item_compras: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::item-compra.item-compra'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::compra.compra'
+    > &
+      Schema.Attribute.Private;
+    metodo_pago: Schema.Attribute.Enumeration<
+      ['efectivo', 'tarjeta', 'transferencia', 'mixto']
+    >;
+    movimiento_stocks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::movimiento-stock.movimiento-stock'
+    >;
+    numero: Schema.Attribute.String;
+    observaciones: Schema.Attribute.String;
+    origen: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    subtotal: Schema.Attribute.Decimal;
+    total: Schema.Attribute.Decimal;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiConsumoCitaConsumoCita extends Struct.CollectionTypeSchema {
   collectionName: 'consumo_citas';
   info: {
@@ -598,6 +646,38 @@ export interface ApiConsumoCitaConsumoCita extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     precio_unitario: Schema.Attribute.Decimal;
+    producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiConsumoInternoConsumoInterno
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'consumo_internos';
+  info: {
+    displayName: 'Consumo_interno';
+    pluralName: 'consumo-internos';
+    singularName: 'consumo-interno';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cantidad: Schema.Attribute.Decimal;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consumo-interno.consumo-interno'
+    > &
+      Schema.Attribute.Private;
+    motivo: Schema.Attribute.String;
     producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -685,6 +765,38 @@ export interface ApiHistorialMedicoHistorialMedico
   };
 }
 
+export interface ApiItemCompraItemCompra extends Struct.CollectionTypeSchema {
+  collectionName: 'item_compras';
+  info: {
+    displayName: 'Item_compra';
+    pluralName: 'item-compras';
+    singularName: 'item-compra';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cantidad: Schema.Attribute.Decimal;
+    compra: Schema.Attribute.Relation<'manyToOne', 'api::compra.compra'>;
+    costoUnitario: Schema.Attribute.Decimal;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    importe: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::item-compra.item-compra'
+    > &
+      Schema.Attribute.Private;
+    producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiItemFacturaItemFactura extends Struct.CollectionTypeSchema {
   collectionName: 'item_facturas';
   info: {
@@ -764,6 +876,41 @@ export interface ApiMascotaMascota extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMovimientoStockMovimientoStock
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'movimiento_stocks';
+  info: {
+    displayName: 'Movimiento_stock';
+    pluralName: 'movimiento-stocks';
+    singularName: 'movimiento-stock';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cantidad: Schema.Attribute.Decimal;
+    comentario: Schema.Attribute.Text;
+    compra: Schema.Attribute.Relation<'manyToOne', 'api::compra.compra'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::movimiento-stock.movimiento-stock'
+    > &
+      Schema.Attribute.Private;
+    producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
+    publishedAt: Schema.Attribute.DateTime;
+    stock: Schema.Attribute.Relation<'manyToOne', 'api::stock.stock'>;
+    tipo: Schema.Attribute.Enumeration<['entrada', 'salida', 'ajuste']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
   collectionName: 'productos';
   info: {
@@ -784,10 +931,18 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::consumo-cita.consumo-cita'
     >;
+    consumo_internos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consumo-interno.consumo-interno'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text;
+    item_compras: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::item-compra.item-compra'
+    >;
     item_facturas: Schema.Attribute.Relation<
       'oneToMany',
       'api::item-factura.item-factura'
@@ -798,6 +953,10 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
       'api::producto.producto'
     > &
       Schema.Attribute.Private;
+    movimiento_stocks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::movimiento-stock.movimiento-stock'
+    >;
     nombre: Schema.Attribute.String;
     precio_unitario: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
@@ -866,6 +1025,10 @@ export interface ApiStockStock extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::stock.stock'> &
       Schema.Attribute.Private;
     lote: Schema.Attribute.String;
+    movimiento_stocks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::movimiento-stock.movimiento-stock'
+    >;
     producto: Schema.Attribute.Relation<'manyToOne', 'api::producto.producto'>;
     publishedAt: Schema.Attribute.DateTime;
     stock_minimo: Schema.Attribute.Decimal;
@@ -1420,11 +1583,15 @@ declare module '@strapi/strapi' {
       'api::cita.cita': ApiCitaCita;
       'api::cliente.cliente': ApiClienteCliente;
       'api::colaborador.colaborador': ApiColaboradorColaborador;
+      'api::compra.compra': ApiCompraCompra;
       'api::consumo-cita.consumo-cita': ApiConsumoCitaConsumoCita;
+      'api::consumo-interno.consumo-interno': ApiConsumoInternoConsumoInterno;
       'api::factura.factura': ApiFacturaFactura;
       'api::historial-medico.historial-medico': ApiHistorialMedicoHistorialMedico;
+      'api::item-compra.item-compra': ApiItemCompraItemCompra;
       'api::item-factura.item-factura': ApiItemFacturaItemFactura;
       'api::mascota.mascota': ApiMascotaMascota;
+      'api::movimiento-stock.movimiento-stock': ApiMovimientoStockMovimientoStock;
       'api::producto.producto': ApiProductoProducto;
       'api::servicio.servicio': ApiServicioServicio;
       'api::stock.stock': ApiStockStock;

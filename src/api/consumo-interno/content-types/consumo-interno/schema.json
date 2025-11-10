@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consumo_internos",
+  "info": {
+    "singularName": "consumo-interno",
+    "pluralName": "consumo-internos",
+    "displayName": "Consumo_interno"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fecha": {
+      "type": "datetime"
+    },
+    "cantidad": {
+      "type": "decimal"
+    },
+    "motivo": {
+      "type": "string"
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::producto.producto",
+      "inversedBy": "consumo_internos"
+    }
+  }
+}

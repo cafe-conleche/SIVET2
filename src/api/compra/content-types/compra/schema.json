@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "compras",
+  "info": {
+    "singularName": "compra",
+    "pluralName": "compras",
+    "displayName": "Compra"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "numero": {
+      "type": "string"
+    },
+    "fecha": {
+      "type": "datetime"
+    },
+    "metodo_pago": {
+      "type": "enumeration",
+      "enum": [
+        "efectivo",
+        "tarjeta",
+        "transferencia",
+        "mixto"
+      ]
+    },
+    "subtotal": {
+      "type": "decimal"
+    },
+    "impuesto": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "pendiente",
+        "recibido",
+        "cancelado"
+      ]
+    },
+    "observaciones": {
+      "type": "string"
+    },
+    "origen": {
+      "type": "string"
+    },
+    "item_compras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item-compra.item-compra",
+      "mappedBy": "compra"
+    },
+    "movimiento_stocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::movimiento-stock.movimiento-stock",
+      "mappedBy": "compra"
+    }
+  }
+}

@@ -49,6 +49,24 @@
       "relation": "oneToMany",
       "target": "api::consumo-cita.consumo-cita",
       "mappedBy": "producto"
+    },
+    "movimiento_stocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::movimiento-stock.movimiento-stock",
+      "mappedBy": "producto"
+    },
+    "consumo_internos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::consumo-interno.consumo-interno",
+      "mappedBy": "producto"
+    },
+    "item_compras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item-compra.item-compra",
+      "mappedBy": "producto"
     }
   }
 }

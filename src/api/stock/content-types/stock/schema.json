@@ -28,6 +28,12 @@
       "relation": "manyToOne",
       "target": "api::producto.producto",
       "inversedBy": "stocks"
+    },
+    "movimiento_stocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::movimiento-stock.movimiento-stock",
+      "mappedBy": "stock"
     }
   }
 }

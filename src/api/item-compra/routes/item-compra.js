@@ -1,0 +1,9 @@
+'use strict';
+
+/**
+ * item-compra router
+ */
+
+const { createCoreRouter } = require('@strapi/strapi').factories;
+
+module.exports = createCoreRouter('api::item-compra.item-compra');
