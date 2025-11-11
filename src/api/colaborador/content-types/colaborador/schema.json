@@ -11,12 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "datos_personales": {
-      "type": "component",
-      "component": "personas.persona",
-      "repeatable": false,
-      "required": true
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
@@ -32,6 +26,18 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::factura.factura",
+      "mappedBy": "colaborador"
+    },
+    "persona": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::persona.persona",
+      "mappedBy": "colaborador"
+    },
+    "compras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::compra.compra",
       "mappedBy": "colaborador"
     }
   }

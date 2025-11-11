@@ -60,6 +60,12 @@
       "relation": "oneToMany",
       "target": "api::movimiento-stock.movimiento-stock",
       "mappedBy": "compra"
+    },
+    "colaborador": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::colaborador.colaborador",
+      "inversedBy": "compras"
     }
   }
 }

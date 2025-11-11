@@ -523,8 +523,6 @@ export interface ApiClienteCliente extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    datos_personales: Schema.Attribute.Component<'personas.persona', false> &
-      Schema.Attribute.Required;
     facturas: Schema.Attribute.Relation<'oneToMany', 'api::factura.factura'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -533,6 +531,7 @@ export interface ApiClienteCliente extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     mascotas: Schema.Attribute.Relation<'oneToMany', 'api::mascota.mascota'>;
+    persona: Schema.Attribute.Relation<'oneToOne', 'api::persona.persona'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -552,11 +551,10 @@ export interface ApiColaboradorColaborador extends Struct.CollectionTypeSchema {
   };
   attributes: {
     citas: Schema.Attribute.Relation<'oneToMany', 'api::cita.cita'>;
+    compras: Schema.Attribute.Relation<'oneToMany', 'api::compra.compra'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    datos_personales: Schema.Attribute.Component<'personas.persona', false> &
-      Schema.Attribute.Required;
     facturas: Schema.Attribute.Relation<'oneToMany', 'api::factura.factura'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -564,6 +562,7 @@ export interface ApiColaboradorColaborador extends Struct.CollectionTypeSchema {
       'api::colaborador.colaborador'
     > &
       Schema.Attribute.Private;
+    persona: Schema.Attribute.Relation<'oneToOne', 'api::persona.persona'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -586,6 +585,10 @@ export interface ApiCompraCompra extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    colaborador: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::colaborador.colaborador'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -905,6 +908,45 @@ export interface ApiMovimientoStockMovimientoStock
     publishedAt: Schema.Attribute.DateTime;
     stock: Schema.Attribute.Relation<'manyToOne', 'api::stock.stock'>;
     tipo: Schema.Attribute.Enumeration<['entrada', 'salida', 'ajuste']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPersonaPersona extends Struct.CollectionTypeSchema {
+  collectionName: 'personas';
+  info: {
+    displayName: 'Persona';
+    pluralName: 'personas';
+    singularName: 'persona';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    apellidos: Schema.Attribute.String;
+    cedula: Schema.Attribute.String;
+    cliente: Schema.Attribute.Relation<'oneToOne', 'api::cliente.cliente'>;
+    colaborador: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::colaborador.colaborador'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    fecha_nacimiento: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::persona.persona'
+    > &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1592,6 +1634,7 @@ declare module '@strapi/strapi' {
       'api::item-factura.item-factura': ApiItemFacturaItemFactura;
       'api::mascota.mascota': ApiMascotaMascota;
       'api::movimiento-stock.movimiento-stock': ApiMovimientoStockMovimientoStock;
+      'api::persona.persona': ApiPersonaPersona;
       'api::producto.producto': ApiProductoProducto;
       'api::servicio.servicio': ApiServicioServicio;
       'api::stock.stock': ApiStockStock;

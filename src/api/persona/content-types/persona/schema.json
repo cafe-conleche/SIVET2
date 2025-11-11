@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personas",
+  "info": {
+    "singularName": "persona",
+    "pluralName": "personas",
+    "displayName": "Persona"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "apellidos": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "cedula": {
+      "type": "string"
+    },
+    "fecha_nacimiento": {
+      "type": "date"
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    },
+    "cliente": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cliente.cliente",
+      "inversedBy": "persona"
+    },
+    "colaborador": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::colaborador.colaborador",
+      "inversedBy": "persona"
+    }
+  }
+}

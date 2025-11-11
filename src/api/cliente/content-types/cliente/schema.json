@@ -11,12 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "datos_personales": {
-      "type": "component",
-      "component": "personas.persona",
-      "repeatable": false,
-      "required": true
-    },
     "mascotas": {
       "type": "relation",
       "relation": "oneToMany",
@@ -27,6 +21,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::factura.factura",
+      "mappedBy": "cliente"
+    },
+    "persona": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::persona.persona",
       "mappedBy": "cliente"
     }
   }
