@@ -27,7 +27,8 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::persona.persona",
-      "mappedBy": "cliente"
+      "mappedBy": "cliente",
+      "delete": "CASCADE"
     }
   }
 }

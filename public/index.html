@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - VetSystem</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+      <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="brand-icon">🐾</div>
+            <span>VetSystem</span>
+        </div>
+
+        <ul class="navbar-menu">
+            <li><a href="index.html" class="active">🏠 Inicio</a></li>
+            <li><a href="clientes.html">👥 Clientes</a></li>
+            <li><a href="mascotas.html">🐕 Mascotas</a></li>
+            <li><a href="#">📅 Citas</a></li>
+            <li><a href="#">💊 Productos</a></li>
+            <li><a href="#">💰 Facturación</a></li>
+        </ul>
+
+        <div class="navbar-right">
+            <div class="notification-icon">
+                🔔
+                <span class="notification-badge">5</span>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">DR</div>
+                <div class="user-info">
+                    <div class="user-name">Dr. Rivera</div>
+                    <div class="user-role">Veterinario</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <!-- Encabezado de Página -->
+      <div class="page-header">
+        <h1>Dashboard</h1>
+        <p>Bienvenido de vuelta, aquí está el resumen de tu clínica hoy</p>
+      </div>
+
+      <!-- Tarjetas de Estadísticas -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">📅</div>
+          <div class="stat-info">
+            <h3>12</h3>
+            <p>Citas Hoy</p>
+            <small>↑ 8% vs ayer</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">💰</div>
+          <div class="stat-info">
+            <h3>$3,450</h3>
+            <p>Ingresos del Día</p>
+            <small>↑ 12% vs ayer</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange">🐕</div>
+          <div class="stat-info">
+            <h3>156</h3>
+            <p>Pacientes Activos</p>
+            <small>↑ 5% este mes</small>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon red">⚠️</div>
+          <div class="stat-info">
+            <h3>5</h3>
+            <p>Alertas Pendientes</p>
+            <small>Requieren atención</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Contenido -->
+      <div class="content-grid">
+        <!-- Citas Pendientes -->
+        <div class="content-card">
+          <div class="card-header">
+            <h2>📅 Citas de Hoy</h2>
+            <a href="#">Ver todas</a>
+          </div>
+          <div class="card-body">
+            <div class="appointment-item">
+              <div class="appointment-time">
+                <div class="time">09:00</div>
+                <div class="date">AM</div>
+              </div>
+              <div class="appointment-info">
+                <div class="pet-name">Max - Golden Retriever</div>
+                <div class="owner-name">Carlos Martínez</div>
+              </div>
+              <span class="appointment-type type-consultation">Consulta</span>
+            </div>
+
+            <div class="appointment-item">
+              <div class="appointment-time">
+                <div class="time">10:30</div>
+                <div class="date">AM</div>
+              </div>
+              <div class="appointment-info">
+                <div class="pet-name">Luna - Gato Persa</div>
+                <div class="owner-name">Ana García</div>
+              </div>
+              <span class="appointment-type type-vaccination">Vacunación</span>
+            </div>
+
+            <div class="appointment-item">
+              <div class="appointment-time">
+                <div class="time">11:00</div>
+                <div class="date">AM</div>
+              </div>
+              <div class="appointment-info">
+                <div class="pet-name">Rocky - Bulldog</div>
+                <div class="owner-name">Miguel Rodríguez</div>
+              </div>
+              <span class="appointment-type type-consultation">Consulta</span>
+            </div>
+
+            <div class="appointment-item">
+              <div class="appointment-time">
+                <div class="time">02:00</div>
+                <div class="date">PM</div>
+              </div>
+              <div class="appointment-info">
+                <div class="pet-name">Bella - Labrador</div>
+                <div class="owner-name">Laura Sánchez</div>
+              </div>
+              <span class="appointment-type type-surgery">Cirugía</span>
+            </div>
+
+            <div class="appointment-item">
+              <div class="appointment-time">
+                <div class="time">04:30</div>
+                <div class="date">PM</div>
+              </div>
+              <div class="appointment-info">
+                <div class="pet-name">Coco - Chihuahua</div>
+                <div class="owner-name">Roberto López</div>
+              </div>
+              <span class="appointment-type type-vaccination">Vacunación</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alertas y Notificaciones -->
+        <div class="content-card">
+          <div class="card-header">
+            <h2>⚠️ Alertas</h2>
+            <a href="#">Ver todas</a>
+          </div>
+          <div class="card-body">
+            <div class="alert-item warning">
+              <div class="alert-icon">💊</div>
+              <div class="alert-content">
+                <h4>Stock Bajo</h4>
+                <p>Vacuna antirrábica: 5 unidades restantes</p>
+              </div>
+            </div>
+
+            <div class="alert-item danger">
+              <div class="alert-icon">📋</div>
+              <div class="alert-content">
+                <h4>Seguimiento Pendiente</h4>
+                <p>3 pacientes requieren revisión post-operatoria</p>
+              </div>
+            </div>
+
+            <div class="alert-item info">
+              <div class="alert-icon">📅</div>
+              <div class="alert-content">
+                <h4>Recordatorios</h4>
+                <p>8 mascotas necesitan vacunación esta semana</p>
+              </div>
+            </div>
+
+            <div class="alert-item warning">
+              <div class="alert-icon">💳</div>
+              <div class="alert-content">
+                <h4>Pagos Pendientes</h4>
+                <p>$1,200 en facturas vencidas</p>
+              </div>
+            </div>
+
+            <div class="alert-item info">
+              <div class="alert-icon">🔔</div>
+              <div class="alert-content">
+                <h4>Citas Confirmadas</h4>
+                <p>10 citas confirmadas para mañana</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ingresos y Actividad Reciente -->
+      <div class="content-grid">
+        <!-- Ingresos Semanales -->
+        <div class="content-card">
+          <div class="card-header">
+            <h2>💰 Ingresos Esta Semana</h2>
+            <a href="#">Ver reporte completo</a>
+          </div>
+          <div class="card-body">
+            <div class="revenue-chart">
+              <div class="chart-bar" style="height: 60%">
+                <span class="chart-label">Lun</span>
+              </div>
+              <div class="chart-bar" style="height: 80%">
+                <span class="chart-label">Mar</span>
+              </div>
+              <div class="chart-bar" style="height: 45%">
+                <span class="chart-label">Mié</span>
+              </div>
+              <div class="chart-bar" style="height: 90%">
+                <span class="chart-label">Jue</span>
+              </div>
+              <div class="chart-bar" style="height: 100%">
+                <span class="chart-label">Vie</span>
+              </div>
+              <div class="chart-bar" style="height: 70%">
+                <span class="chart-label">Sáb</span>
+              </div>
+              <div class="chart-bar" style="height: 35%">
+                <span class="chart-label">Dom</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actividad Reciente -->
+        <div class="content-card">
+          <div class="card-header">
+            <h2>📊 Actividad Reciente</h2>
+            <a href="#">Ver todo</a>
+          </div>
+          <div class="card-body">
+            <div class="activity-item">
+              <div class="activity-icon success">✓</div>
+              <div class="activity-info">
+                <div class="activity-title">Cita Completada</div>
+                <div class="activity-description">Max - Consulta general</div>
+                <div class="activity-time">Hace 15 minutos</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon primary">💰</div>
+              <div class="activity-info">
+                <div class="activity-title">Pago Recibido</div>
+                <div class="activity-description">$350 - Factura #1234</div>
+                <div class="activity-time">Hace 1 hora</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon warning">📋</div>
+              <div class="activity-info">
+                <div class="activity-title">Nuevo Paciente</div>
+                <div class="activity-description">
+                  Registrado: Toby - Beagle
+                </div>
+                <div class="activity-time">Hace 2 horas</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon success">💊</div>
+              <div class="activity-info">
+                <div class="activity-title">Medicamento Despachado</div>
+                <div class="activity-description">Antibiótico - Luna</div>
+                <div class="activity-time">Hace 3 horas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes - VetSystem</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="brand-icon">🐾</div>
+            <span>VetSystem</span>
+        </div>
+
+        <ul class="navbar-menu">
+            <li><a href="index.html">🏠 Inicio</a></li>
+            <li><a href="clientes.html" class="active">👥 Clientes</a></li>
+            <li><a href="mascotas.html">🐕 Mascotas</a></li>
+            <li><a href="#">📅 Citas</a></li>
+            <li><a href="#">💊 Productos</a></li>
+            <li><a href="#">💰 Facturación</a></li>
+        </ul>
+
+        <div class="navbar-right">
+            <div class="notification-icon">
+                🔔
+                <span class="notification-badge">5</span>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">DR</div>
+                <div class="user-info">
+                    <div class="user-name">Dr. Rivera</div>
+                    <div class="user-role">Veterinario</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <!-- Encabezado de Página -->
+      <div class="page-header">
+        <div>
+          <h1>Gestión de Clientes</h1>
+          <p>Administra la información de tus clientes y sus mascotas</p>
+        </div>
+        <button class="btn-primary" id="btnAbrirModal">
+          <span>➕</span> Agregar Cliente
+        </button>
+      </div>
+
+      <!-- Barra de Búsqueda y Filtros -->
+      <div class="search-section">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Buscar por nombre, teléfono o correo..."
+            id="searchInput"
+          />
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="active">Activos</button>
+          <button class="filter-btn" data-filter="inactive">Inactivos</button>
+        </div>
+      </div>
+
+      <!-- Estadísticas Rápidas -->
+      <div class="stats-row">
+        <div class="mini-stat">
+          <div class="mini-stat-icon">👥</div>
+          <div class="mini-stat-info">
+            <h4>245</h4>
+            <p>Total Clientes</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">🐕</div>
+          <div class="mini-stat-info">
+            <h4>387</h4>
+            <p>Mascotas Registradas</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">✅</div>
+          <div class="mini-stat-info">
+            <h4>238</h4>
+            <p>Clientes Activos</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">📅</div>
+          <div class="mini-stat-info">
+            <h4>12</h4>
+            <p>Nuevos Este Mes</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Clientes -->
+      <div class="table-container">
+        <table class="clients-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Mascotas</th>
+              <th>Última Visita</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td>
+                <div class="client-info">
+                  <div class="client-avatar">CM</div>
+                  <div>
+                    <div class="client-name">Carlos Martínez</div>
+                    <div class="client-id">ID: #001</div>
+                  </div>
+                </div>
+              </td>
+              <td>+52 442 123 4567</td>
+              <td>carlos.martinez@email.com</td>
+              <td>
+                <span class="pets-count">2 mascotas</span>
+              </td>
+              <td>10 Nov 2025</td>
+              <td><span class="status-badge active">Activo</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-icon btn-view" title="Ver detalles">
+                    👁️
+                  </button>
+                  <button class="btn-icon btn-edit" title="Editar">✏️</button>
+                  <button class="btn-icon btn-delete" title="Eliminar">
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="client-info">
+                  <div class="client-avatar">AG</div>
+                  <div>
+                    <div class="client-name">Ana García</div>
+                    <div class="client-id">ID: #002</div>
+                  </div>
+                </div>
+              </td>
+              <td>+52 442 234 5678</td>
+              <td>ana.garcia@email.com</td>
+              <td>
+                <span class="pets-count">1 mascota</span>
+              </td>
+              <td>08 Nov 2025</td>
+              <td><span class="status-badge active">Activo</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-icon btn-view" title="Ver detalles">
+                    👁️
+                  </button>
+                  <button class="btn-icon btn-edit" title="Editar">✏️</button>
+                  <button class="btn-icon btn-delete" title="Eliminar">
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="client-info">
+                  <div class="client-avatar">MR</div>
+                  <div>
+                    <div class="client-name">Miguel Rodríguez</div>
+                    <div class="client-id">ID: #003</div>
+                  </div>
+                </div>
+              </td>
+              <td>+52 442 345 6789</td>
+              <td>miguel.rodriguez@email.com</td>
+              <td>
+                <span class="pets-count">3 mascotas</span>
+              </td>
+              <td>05 Nov 2025</td>
+              <td><span class="status-badge active">Activo</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-icon btn-view" title="Ver detalles">
+                    👁️
+                  </button>
+                  <button class="btn-icon btn-edit" title="Editar">✏️</button>
+                  <button class="btn-icon btn-delete" title="Eliminar">
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="client-info">
+                  <div class="client-avatar">LS</div>
+                  <div>
+                    <div class="client-name">Laura Sánchez</div>
+                    <div class="client-id">ID: #004</div>
+                  </div>
+                </div>
+              </td>
+              <td>+52 442 456 7890</td>
+              <td>laura.sanchez@email.com</td>
+              <td>
+                <span class="pets-count">1 mascota</span>
+              </td>
+              <td>28 Oct 2025</td>
+              <td><span class="status-badge inactive">Inactivo</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-icon btn-view" title="Ver detalles">
+                    👁️
+                  </button>
+                  <button class="btn-icon btn-edit" title="Editar">✏️</button>
+                  <button class="btn-icon btn-delete" title="Eliminar">
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="client-info">
+                  <div class="client-avatar">RL</div>
+                  <div>
+                    <div class="client-name">Roberto López</div>
+                    <div class="client-id">ID: #005</div>
+                  </div>
+                </div>
+              </td>
+              <td>+52 442 567 8901</td>
+              <td>roberto.lopez@email.com</td>
+              <td>
+                <span class="pets-count">2 mascotas</span>
+              </td>
+              <td>12 Nov 2025</td>
+              <td><span class="status-badge active">Activo</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-icon btn-view" title="Ver detalles">
+                    👁️
+                  </button>
+                  <button class="btn-icon btn-edit" title="Editar">✏️</button>
+                  <button class="btn-icon btn-delete" title="Eliminar">
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginación -->
+      <div class="pagination">
+        <button class="pagination-btn" disabled>« Anterior</button>
+        <div class="pagination-numbers">
+          <button class="pagination-number active">1</button>
+          <button class="pagination-number">2</button>
+          <button class="pagination-number">3</button>
+          <span>...</span>
+          <button class="pagination-number">10</button>
+        </div>
+        <button class="pagination-btn">Siguiente »</button>
+      </div>
+    </main>
+
+    <!-- Modal para Agregar/Editar Cliente -->
+    <div class="modal" id="clientModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Agregar Nuevo Cliente</h2>
+          <button class="modal-close" id="btnCerrarModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="formCliente">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  placeholder="Ej: Juan"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="apellidos">Apellidos *</label>
+                <input
+                  type="text"
+                  id="apellidos"
+                  placeholder="Ej: Pérez López"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  placeholder="Ej: 88578066"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo *</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="ejemplo@email.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cedula">Cédula *</label>
+                <input
+                  type="text"
+                  id="cedula"
+                  placeholder="Ej: 00123123123A"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
+                <input type="date" id="fecha_nacimiento" required />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn-secondary"
+                id="btnCerrarModalIcon"
+              >
+                Cancelar
+              </button>
+              <button type="submit" class="btn-primary">Guardar Cliente</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/utils/validation.js"></script>
+    <script type="module" src="assets/js/clientes.js"></script>
+  </body>
+</html>
