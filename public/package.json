@@ -1,0 +1,12 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+   "vendor:notyf": "powershell -Command \"New-Item -ItemType Directory -Force vendor/notyf; Copy-Item node_modules/notyf/notyf.min.js vendor/notyf/; Copy-Item node_modules/notyf/notyf.min.css vendor/notyf/\"",
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "notyf": "^3.10.0"
+  }
+}

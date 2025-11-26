@@ -19,6 +19,7 @@
     "@strapi/plugin-users-permissions": "5.29.0",
     "@strapi/strapi": "5.29.0",
     "better-sqlite3": "11.3.0",
+    "notyf": "^3.10.0",
     "pg": "^8.16.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -32,5 +33,17 @@
   "strapi": {
     "uuid": "5d25fe3c-4e87-411a-aeee-be9c20f27e9e",
     "installId": "2dfd36743ad7036af3fd052b03da1fceddd36848b3d949d9424ca313e02f8947"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cafe-conleche/SIVET2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cafe-conleche/SIVET2/issues"
+  },
+  "homepage": "https://github.com/cafe-conleche/SIVET2#readme"
 }
