@@ -1,243 +1,245 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mascotas - VetSystem</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <div class="brand-icon">🐾</div>
-        <span>VetSystem</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mascotas - VetSystem</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="brand-icon">🐾</div>
+      <span>VetSystem</span>
+    </div>
+
+    <ul class="navbar-menu">
+      <li><a href="index.html">🏠 Inicio</a></li>
+      <li><a href="clientes.html">👥 Clientes</a></li>
+      <li><a href="mascotas.html" class="active">🐕 Mascotas</a></li>
+      <li><a href="#">📅 Citas</a></li>
+      <li><a href="#">💊 Productos</a></li>
+      <li><a href="#">💰 Facturación</a></li>
+    </ul>
+    <!--NUEVA MODIFICACION **************************** -->
+    <div class="navbar-right">
+      <div class="notification-icon">
+        🔔
+        <span class="notification-badge">5</span>
       </div>
 
-      <ul class="navbar-menu">
-        <li><a href="index.html">🏠 Inicio</a></li>
-        <li><a href="clientes.html">👥 Clientes</a></li>
-        <li><a href="mascotas.html" class="active">🐕 Mascotas</a></li>
-        <li><a href="#">📅 Citas</a></li>
-        <li><a href="#">💊 Productos</a></li>
-        <li><a href="#">💰 Facturación</a></li>
-      </ul>
-
-      <div class="navbar-right">
-        <div class="notification-icon">
-          🔔
-          <span class="notification-badge">5</span>
-        </div>
-        <div class="user-profile">
-          <div class="user-avatar">DR</div>
+      <!-- MENÚ DE USUARIO -->
+      <div class="user-menu">
+        <button class="user-profile-btn" id="userMenuToggle" type="button">
+          <div class="user-avatar" id="userAvatar">DR</div>
           <div class="user-info">
-            <div class="user-name">Dr. Rivera</div>
-            <div class="user-role">Veterinario</div>
+            <div class="user-name" id="userName">Dr. Rivera</div>
+            <div class="user-role" id="userRole">Veterinario</div>
           </div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Contenido Principal -->
-    <main class="main-content">
-      <!-- Encabezado de Página -->
-      <div class="page-header">
-        <div>
-          <h1>Gestión de Mascotas</h1>
-          <p>Administra el historial médico y datos de las mascotas</p>
-        </div>
-        <button class="btn-primary" id="btnAbrirModalPrincipal">
-          <span>➕</span> Agregar Mascota
+          <span class="user-caret">▾</span>
         </button>
-      </div>
 
-      <!-- Barra de Búsqueda y Filtros -->
-      <div class="search-section">
-        <div class="search-bar">
-          <span class="search-icon">🔍</span>
-          <input
-            type="text"
-            placeholder="Buscar por nombre, dueño o especie..."
-            id="searchInput"
-          />
-        </div>
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="perros">🐕 Perros</button>
-          <button class="filter-btn" data-filter="gatos">🐈 Gatos</button>
-          <button class="filter-btn" data-filter="otros">🐰 Otros</button>
+        <div class="user-dropdown" id="userDropdown">
+          <button class="dropdown-item" id="profileOption" type="button">
+            👤 Mi perfil
+          </button>
+          <button class="dropdown-item" id="logoutBtn" type="button">
+            🚪 Cerrar sesión
+          </button>
         </div>
       </div>
+    </div>
+    <!-- ************ **************************** -->
 
-      <!-- Estadísticas Rápidas -->
-      <div class="stats-row">
-        <div class="mini-stat">
-          <div class="mini-stat-icon">🐾</div>
-          <div class="mini-stat-info">
-            <h4>387</h4>
-            <p>Total Mascotas</p>
-          </div>
-        </div>
-        <div class="mini-stat">
-          <div class="mini-stat-icon">🐕</div>
-          <div class="mini-stat-info">
-            <h4>245</h4>
-            <p>Perros</p>
-          </div>
-        </div>
-        <div class="mini-stat">
-          <div class="mini-stat-icon">🐈</div>
-          <div class="mini-stat-info">
-            <h4>128</h4>
-            <p>Gatos</p>
-          </div>
-        </div>
-        <div class="mini-stat">
-          <div class="mini-stat-icon">💉</div>
-          <div class="mini-stat-info">
-            <h4>23</h4>
-            <p>Vacunas Pendientes</p>
-          </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <!-- Encabezado de Página -->
+    <div class="page-header">
+      <div>
+        <h1>Gestión de Mascotas</h1>
+        <p>Administra el historial médico y datos de las mascotas</p>
+      </div>
+      <button class="btn-primary" id="btnAbrirModalPrincipal">
+        <span>➕</span> Agregar Mascota
+      </button>
+    </div>
+
+    <!-- Barra de Búsqueda y Filtros -->
+    <div class="search-section">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Buscar por nombre, dueño o especie..." id="searchInput" />
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="perros">🐕 Perros</button>
+        <button class="filter-btn" data-filter="gatos">🐈 Gatos</button>
+        <button class="filter-btn" data-filter="otros">🐰 Otros</button>
+      </div>
+    </div>
+
+    <!-- Estadísticas Rápidas -->
+    <div class="stats-row">
+      <div class="mini-stat">
+        <div class="mini-stat-icon">🐾</div>
+        <div class="mini-stat-info">
+          <h4>387</h4>
+          <p>Total Mascotas</p>
         </div>
       </div>
-
-      <!-- Tabla de Mascotas -->
-      <div class="table-container">
-        <table class="clients-table">
-          <thead>
-            <tr>
-              <th>Mascota</th>
-              <th>Especie / Raza</th>
-              <th>Dueño</th>
-              <th>Edad</th>
-              <th>Peso</th>
-              <th>Última Visita</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <!-- Paginación -->
-      <div class="pagination">
-        <button class="pagination-btn" disabled>« Anterior</button>
-        <div class="pagination-numbers">
-          <button class="pagination-number active">1</button>
-          <button class="pagination-number">2</button>
-          <button class="pagination-number">3</button>
-          <span>...</span>
-          <button class="pagination-number">15</button>
+      <div class="mini-stat">
+        <div class="mini-stat-icon">🐕</div>
+        <div class="mini-stat-info">
+          <h4>245</h4>
+          <p>Perros</p>
         </div>
-        <button class="pagination-btn">Siguiente »</button>
       </div>
-    </main>
-    
-    <!-- Modal para Agregar/Editar Mascota -->
-    <div class="modal" id="clientModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 id="modalTitle">Agregar Nueva Mascota</h2>
-          <button class="modal-close" id="btnCerrarModal">✕</button>
+      <div class="mini-stat">
+        <div class="mini-stat-icon">🐈</div>
+        <div class="mini-stat-info">
+          <h4>128</h4>
+          <p>Gatos</p>
         </div>
-        <div class="modal-body">
-          <form id="formMascota">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nombre">Nombre de la Mascota *</label>
-                <input type="text" id="nombre" placeholder="Ej: Max" required />
-              </div>
-              <div class="form-group">
-                <label for="dueno">Dueño *</label>
-                <select id="dueno" required>
-                  <option value="">Seleccionar cliente...</option>
-                  <!-- Los clientes se cargarán dinámicamente -->
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="especie">Especie *</label>
-                <select id="especie" required>
-                  <option value="">Seleccionar...</option>
-                  <option value="perro">🐕 Perro</option>
-                  <option value="gato">🐈 Gato</option>
-                  <option value="conejo">🐰 Conejo</option>
-                  <option value="ave">🦜 Ave</option>
-                  <option value="reptil">🦎 Reptil</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="raza">Raza</label>
-                <input
-                  type="text"
-                  id="raza"
-                  placeholder="Ej: Golden Retriever"
-                />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="sexo">Sexo *</label>
-                <select id="sexo" required>
-                  <option value="">Seleccionar...</option>
-                  <option value="macho">Macho</option>
-                  <option value="hembra">Hembra</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
-                <input type="date" id="fecha_nacimiento" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="peso">Peso (kg) *</label>
-                <input
-                  type="number"
-                  id="peso"
-                  placeholder="Ej: 25.5"
-                  step="0.1"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="rasgo_distintivo">Color/Características</label>
-                <input
-                  type="text"
-                  id="rasgo_distintivo"
-                  placeholder="Ej: Dorado, manchas negras"
-                />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="esterilizado">Esterilizado</label>
-                <select id="esterilizado">
-                  <option value="false">No</option>
-                  <option value="true">Sí</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn-secondary" id="btnCancelar">
-                Cancelar
-              </button>
-              <button type="submit" class="btn-primary">Guardar Mascota</button>
-            </div>
-          </form>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-icon">💉</div>
+        <div class="mini-stat-info">
+          <h4>23</h4>
+          <p>Vacunas Pendientes</p>
         </div>
       </div>
     </div>
 
-    <script src="assets/js/api.js"></script>
-    <script src="assets/js/utils/validation.js"></script>
-    <script src="assets/js/mascotas.js"></script>
-  </body>
+    <!-- Tabla de Mascotas -->
+    <div class="table-container">
+      <table class="clients-table">
+        <thead>
+          <tr>
+            <th>Mascota</th>
+            <th>Especie / Raza</th>
+            <th>Dueño</th>
+            <th>Edad</th>
+            <th>Peso</th>
+            <th>Última Visita</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination">
+      <button class="pagination-btn" disabled>« Anterior</button>
+      <div class="pagination-numbers">
+        <button class="pagination-number active">1</button>
+        <button class="pagination-number">2</button>
+        <button class="pagination-number">3</button>
+        <span>...</span>
+        <button class="pagination-number">15</button>
+      </div>
+      <button class="pagination-btn">Siguiente »</button>
+    </div>
+  </main>
+
+  <!-- Modal para Agregar/Editar Mascota -->
+  <div class="modal" id="clientModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Agregar Nueva Mascota</h2>
+        <button class="modal-close" id="btnCerrarModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="formMascota">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre de la Mascota *</label>
+              <input type="text" id="nombre" placeholder="Ej: Max" required />
+            </div>
+            <div class="form-group">
+              <label for="dueno">Dueño *</label>
+              <select id="dueno" required>
+                <option value="">Seleccionar cliente...</option>
+                <!-- Los clientes se cargarán dinámicamente -->
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="especie">Especie *</label>
+              <select id="especie" required>
+                <option value="">Seleccionar...</option>
+                <option value="perro">🐕 Perro</option>
+                <option value="gato">🐈 Gato</option>
+                <option value="conejo">🐰 Conejo</option>
+                <option value="ave">🦜 Ave</option>
+                <option value="reptil">🦎 Reptil</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="raza">Raza</label>
+              <input type="text" id="raza" placeholder="Ej: Golden Retriever" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sexo">Sexo *</label>
+              <select id="sexo" required>
+                <option value="">Seleccionar...</option>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
+              <input type="date" id="fecha_nacimiento" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="peso">Peso (kg) *</label>
+              <input type="number" id="peso" placeholder="Ej: 25.5" step="0.1" required />
+            </div>
+            <div class="form-group">
+              <label for="rasgo_distintivo">Color/Características</label>
+              <input type="text" id="rasgo_distintivo" placeholder="Ej: Dorado, manchas negras" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="esterilizado">Esterilizado</label>
+              <select id="esterilizado">
+                <option value="false">No</option>
+                <option value="true">Sí</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-secondary" id="btnCancelar">
+              Cancelar
+            </button>
+            <button type="submit" class="btn-primary">Guardar Mascota</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/utils/validation.js"></script>
+  <script src="assets/js/mascotas.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
 </html>
