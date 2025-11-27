@@ -1,4 +1,5 @@
 // Movemos las funciones del modal fuera del DOMContentLoaded
+
 let modal;
 
 // Modal functions
@@ -66,7 +67,7 @@ async function openEditModal(clientDocumentId, personaDocumentId) {
     openModal();
   } catch (error) {
     console.error("Error al cargar datos para editar:", error);
-    alert("Error al cargar los datos del cliente");
+    notifyError("Error al cargar los datos del cliente");
   }
 }
 
@@ -157,11 +158,11 @@ async function deleteClient(clientDocumentId, personaDocumentId, clientName) {
     // Luego eliminamos la persona asociada
     await apiDelete(`personas/${personaDocumentId}`);
 
-    alert("Cliente eliminado correctamente");
+    notifySuccess("Cliente eliminado correctamente");
     loadClients(); // Recargar la lista
   } catch (error) {
     console.error("Error al eliminar cliente:", error);
-    alert("Error al eliminar el cliente");
+    notifyError("Error al eliminar el cliente");
   }
 }
 
@@ -205,10 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
 
     // Validaciones
-    if (!validarTexto(nombre)) return alert("Nombre inválido");
-    if (!validarTexto(apellidos)) return alert("Apellidos inválidos");
-    if (!validarTelefono(telefono)) return alert("Teléfono inválido");
-    if (!validarEmail(email)) return alert("Correo inválido");
+    if (!validarTexto(nombre)) return notifySuccess("Nombre inválido");
+    if (!validarTexto(apellidos)) return notifySuccess("Apellidos inválidos");
+    if (!validarTelefono(telefono)) return notifySuccess("Teléfono inválido");
+    if (!validarEmail(email)) return notifySuccess("Correo inválido");
 
     const isEditMode = form.getAttribute("data-edit-mode") === "true";
 
@@ -230,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         });
 
-        alert("Cliente actualizado correctamente");
+        notifySuccess("Cliente actualizado correctamente");
       } else {
         // MODO CREACIÓN
         const personaResp = await apiPost("personas", {
@@ -254,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         });
 
-        alert("Cliente guardado correctamente");
+        notifySuccess("Cliente guardado correctamente");
       }
 
       form.reset();
@@ -263,7 +264,10 @@ document.addEventListener("DOMContentLoaded", () => {
       loadClients();
     } catch (err) {
       console.error("Error real:", err);
-      alert(`Error ${isEditMode ? "actualizando" : "guardando"} cliente`);
+      notifyError(`Error ${isEditMode ? "actualizando" : "guardando"} cliente`);
     }
   });
 });
+
+
+

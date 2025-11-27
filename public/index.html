@@ -4,12 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Dashboard - VetSystem</title>
+  <title>Dashboard - VetSystem</title>
   <link rel="stylesheet" href="./vendor/notyf/notyf.min.css">
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <link rel="stylesheet" href="./vendor/notyf/notyf.min.css">
+
 </head>
 
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-brand">
@@ -18,16 +22,34 @@
     </div>
 
     <ul class="navbar-menu">
-      <li><a href="index.html" class="active">🏠 Inicio</a></li>
-      <li><a href="clientes.html">👥 Clientes</a></li>
-      <li><a href="mascotas.html">🐕 Mascotas</a></li>
-      <li><a href="citas.html">📅 Citas</a></li>
-      <li><a href="productos.html">💊 Productos</a></li>
-      <li><a href="#">💰 Facturación</a></li>
+      <!-- Inicio: todos los roles -->
+      <li data-roles="Administrador,Recepcionista,Veterinario">
+        <a href="index.html">🏠 Inicio</a>
+      </li>
+
+      <!-- Clientes: Admin + Recepcionista -->
+      <li data-roles="Administrador,Recepcionista">
+        <a href="clientes.html">👥 Clientes</a>
+      </li>
+
+      <!-- Mascotas: Admin + Veterinario -->
+      <li data-roles="Administrador,Veterinario">
+        <a href="mascotas.html">🐕 Mascotas</a>
+      </li>
+
+      <!-- Opcionales: solo Admin (puedes usarlos después) -->
+      <li data-roles="Administrador">
+        <a href="citas.html">📅 Citas</a>
+      </li>
+      <li data-roles="Administrador">
+        <a href="productos.html">💊 Productos</a>
+      </li>
+      <li data-roles="Administrador">
+        <a href="#">💰 Facturación</a>
+      </li>
+>>>>>>> master
     </ul>
 
-
-    <!--NUEVA MODIFICACION **************************** -->
     <div class="navbar-right">
       <div class="notification-icon">
         🔔
@@ -39,8 +61,8 @@
         <button class="user-profile-btn" id="userMenuToggle" type="button">
           <div class="user-avatar" id="userAvatar">DR</div>
           <div class="user-info">
-            <div class="user-name" id="userName">Dr. Rivera</div>
-            <div class="user-role" id="userRole">Veterinario</div>
+            <div class="user-name" id="userName">Usuario</div>
+            <div class="user-role" id="userRole">Rol</div>
           </div>
           <span class="user-caret">▾</span>
         </button>
@@ -55,8 +77,6 @@
         </div>
       </div>
     </div>
-<!-- ************ **************************** -->
-
   </nav>
 
   <!-- Contenido Principal -->
@@ -308,14 +328,27 @@
           </div>
         </div>
       </div>
-
     </div>
   </main>
 
-    <script src="./vendor/notyf/notyf.min.js" defer></script>
-    <script src="assets/js/utils/notyf.js" defer></script>
+  <!-- PROTECCIÓN POR LOGIN (cualquiera logueado puede ver el dashboard) -->
+  <script src="assets/js/auth-guard.js"></script>
+  <script>
+    protectPage(); // solo verifica que haya sesión
+  </script>
+
+  <!-- MENÚ DINÁMICO POR ROL -->
+  <script src="assets/js/navbar.js"></script>
+
+
+  <!-- Notificaciones (ya lo tenías) -->
+  <script src="./vendor/notyf/notyf.min.js" defer></script>
+  <script src="assets/js/utils/notyf.js" defer></script>
+
+
+
+  <!-- Lógica de dashboard (avatar, nombre, logout, etc.) -->
   <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>
-
