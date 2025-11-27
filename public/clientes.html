@@ -1,165 +1,157 @@
 <!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes - VetSystem</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clientes - VetSystem</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="./vendor/notyf/notyf.min.css" />
+  </head>
 
-<link rel="stylesheet" href="./vendor/notyf/notyf.min.css">
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="brand-icon">🐾</div>
+        <span>SIVET</span>
+      </div>
 
+      <ul class="navbar-menu">
+        <!-- Inicio: todos los roles -->
+        <li data-roles="Administrador,Recepcionista,Veterinario">
+          <a href="index.html">🏠 Inicio</a>
+        </li>
 
-</head>
+        <!-- Clientes: Admin + Recepcionista -->
+        <li data-roles="Administrador,Recepcionista">
+          <a href="clientes.html">👥 Clientes</a>
+        </li>
 
-<body>
+        <!-- Mascotas: Admin + Veterinario -->
+        <li data-roles="Administrador,Veterinario">
+          <a href="mascotas.html">🐕 Mascotas</a>
+        </li>
 
+        <!-- Opcionales: solo Admin -->
+        <li data-roles="Administrador">
+          <a href="citas.html">📅 Citas</a>
+        </li>
+        <li data-roles="Administrador">
+          <a href="productos.html">💊 Productos</a>
+        </li>
+        <li data-roles="Administrador">
+          <a href="#">💰 Facturación</a>
+        </li>
+      </ul>
 
-
-  <!-- Navbar -->
-  <nav class="navbar">
-  <div class="navbar-brand">
-    <div class="brand-icon">🐾</div>
-    <span>SIVET</span>
-  </div>
-
-  <ul class="navbar-menu">
-    <!-- Inicio: todos los roles -->
-    <li data-roles="Administrador,Recepcionista,Veterinario">
-      <a href="index.html">🏠 Inicio</a>
-    </li>
-
-    <!-- Clientes: Admin + Recepcionista -->
-    <li data-roles="Administrador,Recepcionista">
-      <a href="clientes.html">👥 Clientes</a>
-    </li>
-
-    <!-- Mascotas: Admin + Veterinario -->
-    <li data-roles="Administrador,Veterinario">
-      <a href="mascotas.html">🐕 Mascotas</a>
-    </li>
-
-    <!-- Opcionales: solo Admin -->
-    <li data-roles="Administrador">
-      <a href="citas.html">📅 Citas</a>
-    </li>
-    <li data-roles="Administrador">
-      <a href="productos.html">💊 Productos</a>
-    </li>
-    <li data-roles="Administrador">
-      <a href="#">💰 Facturación</a>
-    </li>
-  </ul>
-
-  <div class="navbar-right">
-    <div class="notification-icon">
-      🔔
-      <span class="notification-badge">5</span>
-    </div>
-
-    <!-- MENÚ DE USUARIO -->
-    <div class="user-menu">
-      <button class="user-profile-btn" id="userMenuToggle" type="button">
-        <div class="user-avatar" id="userAvatar">DR</div>
-        <div class="user-info">
-          <div class="user-name" id="userName">Usuario</div>
-          <div class="user-role" id="userRole">Rol</div>
->>>>>>> master
+      <div class="navbar-right">
+        <div class="notification-icon">
+          🔔
+          <span class="notification-badge">5</span>
         </div>
-        <span class="user-caret">▾</span>
-      </button>
 
-      <div class="user-dropdown" id="userDropdown">
-        <button class="dropdown-item" id="profileOption" type="button">
-          👤 Mi perfil
+        <!-- MENÚ DE USUARIO -->
+        <div class="user-menu">
+          <button class="user-profile-btn" id="userMenuToggle" type="button">
+            <div class="user-avatar" id="userAvatar">DR</div>
+            <div class="user-info">
+              <div class="user-name" id="userName">Usuario</div>
+              <div class="user-role" id="userRole">Rol</div>
+            </div>
+            <span class="user-caret">▾</span>
+          </button>
+
+          <div class="user-dropdown" id="userDropdown">
+            <button class="dropdown-item" id="profileOption" type="button">
+              👤 Mi perfil
+            </button>
+            <button class="dropdown-item" id="logoutBtn" type="button">
+              🚪 Cerrar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <!-- Encabezado de Página -->
+      <div class="page-header">
+        <div>
+          <h1>Gestión de Clientes</h1>
+          <p>Administra la información de tus clientes y sus mascotas</p>
+        </div>
+        <button class="btn-primary" id="btnAbrirModal">
+          <span>➕</span> Agregar Cliente
         </button>
-        <button class="dropdown-item" id="logoutBtn" type="button">
-          🚪 Cerrar sesión
-        </button>
       </div>
-    </div>
-  </div>
-</nav>
 
-
-  <!-- ************ **************************** -->
-
-
-
-  <!-- Contenido Principal -->
-  <main class="main-content">
-    <!-- Encabezado de Página -->
-    <div class="page-header">
-      <div>
-        <h1>Gestión de Clientes</h1>
-        <p>Administra la información de tus clientes y sus mascotas</p>
-      </div>
-      <button class="btn-primary" id="btnAbrirModal">
-        <span>➕</span> Agregar Cliente
-      </button>
-    </div>
-
-    <!-- Barra de Búsqueda y Filtros -->
-    <div class="search-section">
-      <div class="search-bar">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Buscar por nombre, teléfono o correo..." id="searchInput" />
-      </div>
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="active">Activos</button>
-        <button class="filter-btn" data-filter="inactive">Inactivos</button>
-      </div>
-    </div>
-
-    <!-- Estadísticas Rápidas -->
-    <div class="stats-row">
-      <div class="mini-stat">
-        <div class="mini-stat-icon">👥</div>
-        <div class="mini-stat-info">
-          <h4>245</h4>
-          <p>Total Clientes</p>
+      <!-- Barra de Búsqueda y Filtros -->
+      <div class="search-section">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Buscar por nombre, teléfono o correo..."
+            id="searchInput"
+          />
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="active">Activos</button>
+          <button class="filter-btn" data-filter="inactive">Inactivos</button>
         </div>
       </div>
-      <div class="mini-stat">
-        <div class="mini-stat-icon">🐕</div>
-        <div class="mini-stat-info">
-          <h4>387</h4>
-          <p>Mascotas Registradas</p>
-        </div>
-      </div>
-      <div class="mini-stat">
-        <div class="mini-stat-icon">✅</div>
-        <div class="mini-stat-info">
-          <h4>238</h4>
-          <p>Clientes Activos</p>
-        </div>
-      </div>
-      <div class="mini-stat">
-        <div class="mini-stat-icon">📅</div>
-        <div class="mini-stat-info">
-          <h4>12</h4>
-          <p>Nuevos Este Mes</p>
-        </div>
-      </div>
-    </div>
 
-    <!-- Tabla de Clientes -->
-    <div class="table-container">
-      <table class="clients-table">
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Mascotas</th>
-            <th>Última Visita</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- <tr>
+      <!-- Estadísticas Rápidas -->
+      <div class="stats-row">
+        <div class="mini-stat">
+          <div class="mini-stat-icon">👥</div>
+          <div class="mini-stat-info">
+            <h4>245</h4>
+            <p>Total Clientes</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">🐕</div>
+          <div class="mini-stat-info">
+            <h4>387</h4>
+            <p>Mascotas Registradas</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">✅</div>
+          <div class="mini-stat-info">
+            <h4>238</h4>
+            <p>Clientes Activos</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">📅</div>
+          <div class="mini-stat-info">
+            <h4>12</h4>
+            <p>Nuevos Este Mes</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Clientes -->
+      <div class="table-container">
+        <table class="clients-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Mascotas</th>
+              <th>Última Visita</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
               <td>
                 <div class="client-info">
                   <div class="client-avatar">CM</div>
@@ -304,95 +296,121 @@
                 </div>
               </td>
             </tr> -->
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginación -->
+      <div class="pagination">
+        <button class="pagination-btn" disabled>« Anterior</button>
+        <div class="pagination-numbers">
+          <button class="pagination-number active">1</button>
+          <button class="pagination-number">2</button>
+          <button class="pagination-number">3</button>
+          <span>...</span>
+          <button class="pagination-number">10</button>
+        </div>
+        <button class="pagination-btn">Siguiente »</button>
+      </div>
+    </main>
+
+    <!-- Modal para Agregar/Editar Cliente -->
+    <div class="modal" id="clientModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Agregar Nuevo Cliente</h2>
+          <button class="modal-close" id="btnCerrarModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <form id="formCliente">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  placeholder="Ej: Juan"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="apellidos">Apellidos *</label>
+                <input
+                  type="text"
+                  id="apellidos"
+                  placeholder="Ej: Pérez López"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  placeholder="Ej: 88578066"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo *</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="ejemplo@email.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cedula">Cédula *</label>
+                <input
+                  type="text"
+                  id="cedula"
+                  placeholder="Ej: 00123123123A"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
+                <input type="date" id="fecha_nacimiento" required />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn-secondary"
+                id="btnCerrarModalIcon"
+              >
+                Cancelar
+              </button>
+              <button type="submit" class="btn-primary">Guardar Cliente</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <!-- Paginación -->
-    <div class="pagination">
-      <button class="pagination-btn" disabled>« Anterior</button>
-      <div class="pagination-numbers">
-        <button class="pagination-number active">1</button>
-        <button class="pagination-number">2</button>
-        <button class="pagination-number">3</button>
-        <span>...</span>
-        <button class="pagination-number">10</button>
-      </div>
-      <button class="pagination-btn">Siguiente »</button>
-    </div>
-  </main>
+    <script src="assets/js/auth-guard.js"></script>
+    <script>
+      // Solo Administrador y Recepcionista pueden ver Clientes
+      protectPage(["Administrador", "Recepcionista"]);
+    </script>
 
-  <!-- Modal para Agregar/Editar Cliente -->
-  <div class="modal" id="clientModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Agregar Nuevo Cliente</h2>
-        <button class="modal-close" id="btnCerrarModal">✕</button>
-      </div>
-      <div class="modal-body">
-        <form id="formCliente">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre">Nombre *</label>
-              <input type="text" id="nombre" placeholder="Ej: Juan" required />
-            </div>
-            <div class="form-group">
-              <label for="apellidos">Apellidos *</label>
-              <input type="text" id="apellidos" placeholder="Ej: Pérez López" required />
-            </div>
-          </div>
+    <!-- Notyf (librería y wrapper global) -->
+    <!-- Notificaciones (ya lo tenías) -->
+    <script src="./vendor/notyf/notyf.min.js" defer></script>
+    <script src="assets/js/utils/notyf.js" defer></script>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="telefono">Teléfono *</label>
-              <input type="tel" id="telefono" placeholder="Ej: 88578066" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Correo *</label>
-              <input type="email" id="email" placeholder="ejemplo@email.com" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cedula">Cédula *</label>
-              <input type="text" id="cedula" placeholder="Ej: 00123123123A" required />
-            </div>
-            <div class="form-group">
-              <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
-              <input type="date" id="fecha_nacimiento" required />
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn-secondary" id="btnCerrarModalIcon">
-              Cancelar
-            </button>
-            <button type="submit" class="btn-primary">Guardar Cliente</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-   <script src="assets/js/auth-guard.js"></script>
-  <script>
-    // Solo Administrador y Recepcionista pueden ver Clientes
-    protectPage(['Administrador', 'Recepcionista']);
-  </script>
-
-   <!-- Notyf (librería y wrapper global) -->
-      <!-- Notificaciones (ya lo tenías) -->
-  <script src="./vendor/notyf/notyf.min.js" defer></script>
-  <script src="assets/js/utils/notyf.js" defer></script>
-  
-
-
-  <script src="assets/js/navbar.js"></script>
-  <script src="assets/js/api.js"></script>
-  <script src="assets/js/utils/validation.js"></script>
-  <script type="module" src="assets/js/clientes.js"></script>
-  <script src="assets/js/dashboard.js"></script>
-</body>
-
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/utils/validation.js"></script>
+    <script type="module" src="assets/js/clientes.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+  </body>
 </html>

@@ -8,19 +8,38 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar">
+     <nav class="navbar">
       <div class="navbar-brand">
         <div class="brand-icon">🐾</div>
         <span>SIVET</span>
       </div>
 
       <ul class="navbar-menu">
-        <li><a href="dashboard.html">🏠 Inicio</a></li>
-        <li><a href="clients.html">👥 Clientes</a></li>
-        <li><a href="mascotas.html">🐕 Mascotas</a></li>
-        <li><a href="citas.html" class="active">📅 Citas</a></li>
-        <li><a href="productos.html">💊 Productos</a></li>
-        <li><a href="#">💰 Facturación</a></li>
+        <!-- Inicio: todos los roles -->
+        <li data-roles="Administrador,Recepcionista,Veterinario">
+          <a href="index.html">🏠 Inicio</a>
+        </li>
+
+        <!-- Clientes: Admin + Recepcionista -->
+        <li data-roles="Administrador,Recepcionista">
+          <a href="clientes.html">👥 Clientes</a>
+        </li>
+
+        <!-- Mascotas: Admin + Veterinario -->
+        <li data-roles="Administrador,Veterinario">
+          <a href="mascotas.html">🐕 Mascotas</a>
+        </li>
+
+        <!-- Opcionales: solo Admin -->
+        <li data-roles="Administrador">
+          <a href="citas.html">📅 Citas</a>
+        </li>
+        <li data-roles="Administrador">
+          <a href="productos.html">💊 Productos</a>
+        </li>
+        <li data-roles="Administrador">
+          <a href="#">💰 Facturación</a>
+        </li>
       </ul>
 
       <div class="navbar-right">
@@ -28,11 +47,25 @@
           🔔
           <span class="notification-badge">5</span>
         </div>
-        <div class="user-profile">
-          <div class="user-avatar">DR</div>
-          <div class="user-info">
-            <div class="user-name">Dr. Rivera</div>
-            <div class="user-role">Veterinario</div>
+
+        <!-- MENÚ DE USUARIO -->
+        <div class="user-menu">
+          <button class="user-profile-btn" id="userMenuToggle" type="button">
+            <div class="user-avatar" id="userAvatar">DR</div>
+            <div class="user-info">
+              <div class="user-name" id="userName">Usuario</div>
+              <div class="user-role" id="userRole">Rol</div>
+            </div>
+            <span class="user-caret">▾</span>
+          </button>
+
+          <div class="user-dropdown" id="userDropdown">
+            <button class="dropdown-item" id="profileOption" type="button">
+              👤 Mi perfil
+            </button>
+            <button class="dropdown-item" id="logoutBtn" type="button">
+              🚪 Cerrar sesión
+            </button>
           </div>
         </div>
       </div>
