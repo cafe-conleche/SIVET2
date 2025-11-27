@@ -6,55 +6,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mascotas - VetSystem</title>
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <link rel="stylesheet" href="./vendor/notyf/notyf.min.css">
+
 </head>
 
 <body>
+
+
   <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-brand">
-      <div class="brand-icon">🐾</div>
-      <span>VetSystem</span>
+   <nav class="navbar">
+  <div class="navbar-brand">
+    <div class="brand-icon">🐾</div>
+    <span>VetSystem</span>
+  </div>
+
+  <ul class="navbar-menu">
+    <!-- Inicio: todos los roles -->
+    <li data-roles="Administrador,Recepcionista,Veterinario">
+      <a href="index.html">🏠 Inicio</a>
+    </li>
+
+    <!-- Clientes: Admin + Recepcionista -->
+    <li data-roles="Administrador,Recepcionista">
+      <a href="clientes.html">👥 Clientes</a>
+    </li>
+
+    <!-- Mascotas: Admin + Veterinario -->
+    <li data-roles="Administrador,Veterinario">
+      <a href="mascotas.html">🐕 Mascotas</a>
+    </li>
+
+    <!-- Opcionales: solo Admin -->
+    <li data-roles="Administrador">
+      <a href="#">📅 Citas</a>
+    </li>
+    <li data-roles="Administrador">
+      <a href="#">💊 Productos</a>
+    </li>
+    <li data-roles="Administrador">
+      <a href="#">💰 Facturación</a>
+    </li>
+  </ul>
+
+  <div class="navbar-right">
+    <div class="notification-icon">
+      🔔
+      <span class="notification-badge">5</span>
     </div>
 
-    <ul class="navbar-menu">
-      <li><a href="index.html">🏠 Inicio</a></li>
-      <li><a href="clientes.html">👥 Clientes</a></li>
-      <li><a href="mascotas.html" class="active">🐕 Mascotas</a></li>
-      <li><a href="#">📅 Citas</a></li>
-      <li><a href="#">💊 Productos</a></li>
-      <li><a href="#">💰 Facturación</a></li>
-    </ul>
-    <!--NUEVA MODIFICACION **************************** -->
-    <div class="navbar-right">
-      <div class="notification-icon">
-        🔔
-        <span class="notification-badge">5</span>
-      </div>
-
-      <!-- MENÚ DE USUARIO -->
-      <div class="user-menu">
-        <button class="user-profile-btn" id="userMenuToggle" type="button">
-          <div class="user-avatar" id="userAvatar">DR</div>
-          <div class="user-info">
-            <div class="user-name" id="userName">Dr. Rivera</div>
-            <div class="user-role" id="userRole">Veterinario</div>
-          </div>
-          <span class="user-caret">▾</span>
-        </button>
-
-        <div class="user-dropdown" id="userDropdown">
-          <button class="dropdown-item" id="profileOption" type="button">
-            👤 Mi perfil
-          </button>
-          <button class="dropdown-item" id="logoutBtn" type="button">
-            🚪 Cerrar sesión
-          </button>
+    <!-- MENÚ DE USUARIO -->
+    <div class="user-menu">
+      <button class="user-profile-btn" id="userMenuToggle" type="button">
+        <div class="user-avatar" id="userAvatar">DR</div>
+        <div class="user-info">
+          <div class="user-name" id="userName">Usuario</div>
+          <div class="user-role" id="userRole">Rol</div>
         </div>
+        <span class="user-caret">▾</span>
+      </button>
+
+      <div class="user-dropdown" id="userDropdown">
+        <button class="dropdown-item" id="profileOption" type="button">
+          👤 Mi perfil
+        </button>
+        <button class="dropdown-item" id="logoutBtn" type="button">
+          🚪 Cerrar sesión
+        </button>
       </div>
     </div>
-    <!-- ************ **************************** -->
+  </div>
+</nav>
 
-  </nav>
+  
+
+<!-- ************ **************************** -->
+
 
   <!-- Contenido Principal -->
   <main class="main-content">
@@ -236,6 +263,18 @@
     </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="assets/js/auth-guard.js"></script>
+  <script>
+    // Solo Administrador y Veterinario pueden ver Mascotas
+    protectPage(['Administrador', 'Veterinario']);
+  </script>
+
+    <script src="./vendor/notyf/notyf.min.js" defer></script>
+    <script src="assets/js/utils/notyf.js" defer></script>
+  
+
+  <script src="assets/js/navbar.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/utils/validation.js"></script>
   <script src="assets/js/mascotas.js"></script>
