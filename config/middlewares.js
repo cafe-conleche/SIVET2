@@ -23,7 +23,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
+      //enabled: true,
       headers: '*',
       origin: [
         'http://localhost:3000',     // Frontend con Live Server
