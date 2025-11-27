@@ -209,7 +209,7 @@ async function openEditModal(mascotaDocumentId) {
     openModal();
   } catch (error) {
     console.error("Error al cargar datos para editar:", error);
-    alert("Error al cargar los datos de la mascota");
+    notifyError("Error al cargar los datos de la mascota");
   }
 }
 
@@ -228,7 +228,7 @@ async function deleteMascota(mascotaDocumentId, mascotaNombre, event) {
 
     await apiDelete(`mascotas/${mascotaDocumentId}`);
 
-    alert("Mascota eliminada correctamente");
+    notifySuccess("Mascota eliminada correctamente");
     loadMascotas(); // Recargar la lista
   } catch (error) {
     console.error("Error al eliminar mascota:", error);
@@ -237,7 +237,7 @@ async function deleteMascota(mascotaDocumentId, mascotaNombre, event) {
     event.target.disabled = false;
     event.target.textContent = "🗑️";
 
-    alert("Error al eliminar la mascota: " + error.message);
+    notifyError("Error al eliminar la mascota: " + error.message);
   }
 }
 
@@ -307,12 +307,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("esterilizado").value === "true";
 
     // Validaciones básicas
-    if (!validarTexto(nombre)) return alert("Nombre de mascota inválido");
-    if (!duenoId) return alert("Debe seleccionar un dueño");
-    if (!especie) return alert("Debe seleccionar una especie");
-    if (!sexo) return alert("Debe seleccionar un sexo");
-    if (!fecha_nacimiento) return alert("Fecha de nacimiento inválida");
-    if (!peso || peso <= 0) return alert("Peso inválido");
+    if (!validarTexto(nombre)) return notifyError("Nombre de mascota inválido");
+    if (!duenoId) return notifyError("Debe seleccionar un dueño");
+    if (!especie) return notifyError("Debe seleccionar una especie");
+    if (!sexo) return notifyError("Debe seleccionar un sexo");
+    if (!fecha_nacimiento) return notifyError("Fecha de nacimiento inválida");
+    if (!peso || peso <= 0) return notifyError("Peso inválido");
 
     const isEditMode = form.getAttribute("data-edit-mode") === "true";
 
@@ -341,18 +341,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // MODO EDICIÓN
         const mascotaId = form.getAttribute("data-mascota-id");
         await apiPut(`mascotas/${mascotaId}`, mascotaData);
-        alert("Mascota actualizada correctamente");
+        notifySuccess("Mascota actualizada correctamente");
       } else {
         // MODO CREACIÓN
         await apiPost("mascotas", mascotaData);
-        alert("Mascota guardada correctamente");
+        notifySuccess("Mascota guardada correctamente");
       }
 
       closeModal();
       loadMascotas(); // Recargar la lista
     } catch (err) {
       console.error("Error guardando mascota:", err);
-      alert(`Error ${isEditMode ? "actualizando" : "guardando"} mascota`);
+      notifyError(`Error ${isEditMode ? "actualizando" : "guardando"} mascota`);
     }
   });
 });
