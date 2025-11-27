@@ -27,8 +27,14 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::persona.persona",
-      "mappedBy": "cliente",
-      "delete": "CASCADE"
+      "delete": "CASCADE",
+      "mappedBy": "cliente"
+    },
+    "citas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cita.cita",
+      "mappedBy": "cliente"
     }
   }
 }

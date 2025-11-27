@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos y Servicios - VetSystem</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="brand-icon">🐾</div>
+            <span>SIVET</span>
+        </div>
+
+        <ul class="navbar-menu">
+            <li><a href="index.html">🏠 Inicio</a></li>
+            <li><a href="clientes.html">👥 Clientes</a></li>
+            <li><a href="mascotas.html">🐕 Mascotas</a></li>
+            <li><a href="citas.html">📅 Citas</a></li>
+            <li><a href="productos.html" class="active">💊 Productos</a></li>
+            <li><a href="#">💰 Facturación</a></li>
+        </ul>
+
+        <div class="navbar-right">
+            <div class="notification-icon">
+                🔔
+                <span class="notification-badge">5</span>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">DR</div>
+                <div class="user-info">
+                    <div class="user-name">Dr. Rivera</div>
+                    <div class="user-role">Veterinario</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Encabezado de Página -->
+        <div class="page-header">
+            <div>
+                <h1>Productos y Servicios</h1>
+                <p>Gestiona el inventario y los servicios de tu clínica</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-primary" onclick="openProductModal()">
+                    <span>➕</span> Agregar Producto
+                </button>
+                <button class="btn-primary" onclick="openServiceModal()">
+                    <span>➕</span> Agregar Servicio
+                </button>
+            </div>
+        </div>
+
+        <!-- Pestañas de Vista -->
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="showTab('all')">Todos</button>
+            <button class="tab-btn" onclick="showTab('products')">💊 Productos</button>
+            <button class="tab-btn" onclick="showTab('services')">🩺 Servicios</button>
+        </div>
+
+        <!-- Estadísticas Rápidas -->
+        <div class="stats-row">
+            <div class="mini-stat">
+                <div class="mini-stat-icon">📦</div>
+                <div class="mini-stat-info">
+                    <h4>156</h4>
+                    <p>Productos Totales</p>
+                </div>
+            </div>
+            <div class="mini-stat">
+                <div class="mini-stat-icon">🩺</div>
+                <div class="mini-stat-info">
+                    <h4>24</h4>
+                    <p>Servicios Activos</p>
+                </div>
+            </div>
+            <div class="mini-stat">
+                <div class="mini-stat-icon">⚠️</div>
+                <div class="mini-stat-info">
+                    <h4>8</h4>
+                    <p>Stock Bajo</p>
+                </div>
+            </div>
+            <div class="mini-stat">
+                <div class="mini-stat-icon">💰</div>
+                <div class="mini-stat-info">
+                    <h4>$45,230</h4>
+                    <p>Valor Inventario</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros de Búsqueda -->
+        <div class="search-section">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Buscar productos o servicios..." id="searchInput">
+            </div>
+            <div class="filter-buttons">
+                <select class="filter-select" id="categoryFilter">
+                    <option value="all">Todas las categorías</option>
+                    <optgroup label="Productos">
+                        <option value="medicamentos">Medicamentos</option>
+                        <option value="alimentos">Alimentos</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="higiene">Higiene</option>
+                    </optgroup>
+                    <optgroup label="Servicios">
+                        <option value="consulta">Consultas</option>
+                        <option value="cirugia">Cirugías</option>
+                        <option value="estetica">Estética</option>
+                        <option value="laboratorio">Laboratorio</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <!-- <CHANGE> Tabla compacta reemplazando el grid de tarjetas -->
+        <div class="table-container products-table-container">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock / Duración</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Producto 1 -->
+                    <tr class="product-row">
+                        <td><span class="type-badge product-badge">Producto</span></td>
+                        <td><strong>Vacuna Antirrábica</strong></td>
+                        <td>Medicamentos</td>
+                        <td>$350.00</td>
+                        <td><span class="stock-low">12 unidades</span></td>
+                        <td><span class="status-dot active"></span> Disponible</td>
+                        <td class="action-cell">
+                            <button class="action-btn btn-edit" title="Editar">✏️</button>
+                            <button class="action-btn btn-stock" title="Stock">📦</button>
+                            <button class="action-btn btn-delete" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+
+                    <!-- Servicio 1 -->
+                    <tr class="service-row">
+                        <td><span class="type-badge service-badge">Servicio</span></td>
+                        <td><strong>Consulta General</strong></td>
+                        <td>Consultas</td>
+                        <td>$450.00</td>
+                        <td>30 minutos</td>
+                        <td><span class="status-dot active"></span> Activo</td>
+                        <td class="action-cell">
+                            <button class="action-btn btn-edit" title="Editar">✏️</button>
+                            <button class="action-btn btn-view" title="Ver">👁️</button>
+                            <button class="action-btn btn-delete" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+
+                    <!-- Producto 2 -->
+                    <tr class="product-row">
+                        <td><span class="type-badge product-badge">Producto</span></td>
+                        <td><strong>Alimento Premium Perro Adulto</strong></td>
+                        <td>Alimentos</td>
+                        <td>$850.00</td>
+                        <td><span class="stock-good">45 unidades</span></td>
+                        <td><span class="status-dot active"></span> Disponible</td>
+                        <td class="action-cell">
+                            <button class="action-btn btn-edit" title="Editar">✏️</button>
+                            <button class="action-btn btn-stock" title="Stock">📦</button>
+                            <button class="action-btn btn-delete" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+
+                    <!-- Servicio 2 -->
+                    <tr class="service-row">
+                        <td><span class="type-badge service-badge">Servicio</span></td>
+                        <td><strong>Cirugía - Esterilización</strong></td>
+                        <td>Cirugías</td>
+                        <td>$2,500.00</td>
+                        <td>90 minutos</td>
+                        <td><span class="status-dot active"></span> Activo</td>
+                        <td class="action-cell">
+                            <button class="action-btn btn-edit" title="Editar">✏️</button>
+                            <button class="action-btn btn-view" title="Ver">👁️</button>
+                            <button class="action-btn btn-delete" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+
+                    <!-- Producto 3 -->
+                    <tr class="product-row">
+                        <td><span class="type-badge product-badge">Producto</span></td>
+                        <td><strong>Antibiótico Amoxicilina</strong></td>
+                        <td>Medicamentos</td>
+                        <td>$180.00</td>
+                        <td><span class="stock-critical">3 unidades</span></td>
+                        <td><span class="status-dot active"></span> Disponible</td>
+                        <td class="action-cell">
+                            <button class="action-btn btn-edit" title="Editar">✏️</button>
+                            <button class="action-btn btn-stock" title="Stock">📦</button>
+                            <button class="action-btn btn-delete" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+
+                    <!-- Servicio 3 -->
+                    <tr class="service-row">
+                        <td><span class="type-badge service-badge">Servicio</span></td>
+                        <td><strong>Baño y Corte de Pelo</strong></td>
+                        <td>Estética</td>
+                        <td>$350.00</td>
+                        <td>60 minutos</td>
+                        <td><span class="status-dot active"></span> Activo</td>
+                        <td class="action-cell">
+                            <button class="action-btn btn-edit" title="Editar">✏️</button>
+                            <button class="action-btn btn-view" title="Ver">👁️</button>
+                            <button class="action-btn btn-delete" title="Eliminar">🗑️</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Modal para Producto -->
+    <div class="modal" id="productModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Agregar Producto</h2>
+                <button class="modal-close" onclick="closeProductModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-name">Nombre del Producto *</label>
+                            <input type="text" id="product-name" placeholder="Ej: Vacuna Antirrábica" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-code">Código del Producto *</label>
+                            <input type="text" id="product-code" placeholder="Ej: VAC-001" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-category">Categoría *</label>
+                            <select id="product-category" required>
+                                <option value="">Seleccionar categoría...</option>
+                                <option value="medicamentos">💊 Medicamentos</option>
+                                <option value="alimentos">🍖 Alimentos</option>
+                                <option value="accesorios">🎾 Accesorios</option>
+                                <option value="higiene">🛁 Higiene</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">Precio *</label>
+                            <input type="number" id="product-price" placeholder="0.00" step="0.01" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-stock">Stock Inicial *</label>
+                            <input type="number" id="product-stock" placeholder="0" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-min-stock">Stock Mínimo</label>
+                            <input type="number" id="product-min-stock" placeholder="0" min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-supplier">Proveedor</label>
+                            <input type="text" id="product-supplier" placeholder="Nombre del proveedor">
+                        </div>
+                        <div class="form-group">
+                            <label for="product-expiry">Fecha de Caducidad</label>
+                            <input type="date" id="product-expiry">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-description">Descripción</label>
+                        <textarea id="product-description" rows="3" placeholder="Descripción del producto, indicaciones, etc..."></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeProductModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Guardar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Servicio -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Agregar Servicio</h2>
+                <button class="modal-close" onclick="closeServiceModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-name">Nombre del Servicio *</label>
+                            <input type="text" id="service-name" placeholder="Ej: Consulta General" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-type">Tipo de Servicio *</label>
+                            <select id="service-type" required>
+                                <option value="">Seleccionar tipo...</option>
+                                <option value="consulta">🩺 Consulta</option>
+                                <option value="cirugia">✂️ Cirugía</option>
+                                <option value="estetica">🛁 Estética</option>
+                                <option value="laboratorio">🔬 Laboratorio</option>
+                                <option value="vacunacion">💉 Vacunación</option>
+                                <option value="emergencia">🚨 Emergencia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-price">Precio *</label>
+                            <input type="number" id="service-price" placeholder="0.00" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-duration">Duración (minutos) *</label>
+                            <select id="service-duration" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="15">15 minutos</option>
+                                <option value="30">30 minutos</option>
+                                <option value="60">60 minutos</option>
+                                <option value="90">90 minutos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service-description">Descripción</label>
+                        <textarea id="service-description" rows="3" placeholder="Descripción del servicio..."></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeServiceModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Guardar Servicio</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProductModal() {
+            document.getElementById('productModal').classList.add('open');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('open');
+        }
+
+        function openServiceModal() {
+            document.getElementById('serviceModal').classList.add('open');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('open');
+        }
+
+        function showTab(tab) {
+            // Lógica para mostrar/ocultar tabs
+            console.log('Mostrar tab:', tab);
+        }
+    </script>
+</body>
+</html>

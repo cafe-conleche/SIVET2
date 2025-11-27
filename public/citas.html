@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Citas - VetSystem</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="brand-icon">🐾</div>
+        <span>SIVET</span>
+      </div>
+
+      <ul class="navbar-menu">
+        <li><a href="dashboard.html">🏠 Inicio</a></li>
+        <li><a href="clients.html">👥 Clientes</a></li>
+        <li><a href="mascotas.html">🐕 Mascotas</a></li>
+        <li><a href="citas.html" class="active">📅 Citas</a></li>
+        <li><a href="productos.html">💊 Productos</a></li>
+        <li><a href="#">💰 Facturación</a></li>
+      </ul>
+
+      <div class="navbar-right">
+        <div class="notification-icon">
+          🔔
+          <span class="notification-badge">5</span>
+        </div>
+        <div class="user-profile">
+          <div class="user-avatar">DR</div>
+          <div class="user-info">
+            <div class="user-name">Dr. Rivera</div>
+            <div class="user-role">Veterinario</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+      <!-- Encabezado de Página -->
+      <div class="page-header">
+        <div>
+          <h1>Gestión de Citas</h1>
+          <p>Administra y programa las citas de tus pacientes</p>
+        </div>
+        <button class="btn-primary" id="btnAbrirModalPrincipal">
+          <span>➕</span> Nueva Cita
+        </button>
+      </div>
+
+      <!-- Pestañas de Vista -->
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="showTab('today')">Hoy</button>
+        <button class="tab-btn" onclick="showTab('week')">Esta Semana</button>
+        <button class="tab-btn" onclick="showTab('all')">Todas</button>
+        <button class="tab-btn" onclick="showTab('calendar')">
+          Calendario
+        </button>
+      </div>
+
+      <!-- Estadísticas Rápidas -->
+      <div class="stats-row">
+        <div class="mini-stat">
+          <div class="mini-stat-icon">📅</div>
+          <div class="mini-stat-info">
+            <h4>12</h4>
+            <p>Citas Hoy</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">⏰</div>
+          <div class="mini-stat-info">
+            <h4>5</h4>
+            <p>Pendientes</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">✅</div>
+          <div class="mini-stat-info">
+            <h4>7</h4>
+            <p>Completadas</p>
+          </div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-icon">❌</div>
+          <div class="mini-stat-info">
+            <h4>2</h4>
+            <p>Canceladas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filtros de Búsqueda -->
+      <div class="search-section">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Buscar por cliente, mascota o motivo..."
+            id="searchInput"
+          />
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="pending">Pendientes</button>
+          <button class="filter-btn" data-filter="confirmed">
+            Confirmadas
+          </button>
+          <button class="filter-btn" data-filter="completed">
+            Completadas
+          </button>
+          <button class="filter-btn" data-filter="cancelled">Canceladas</button>
+        </div>
+      </div>
+
+      <!-- Vista de Citas -->
+      <div class="appointments-container">
+        <div class="appointments-header">
+          <h2>📆 Martes, 25 de Noviembre 2025</h2>
+          <div class="date-navigation">
+            <button class="nav-date-btn">← Anterior</button>
+            <button class="nav-date-btn btn-today">Hoy</button>
+            <button class="nav-date-btn">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- Grid de Citas -->
+        <div class="appointments-grid">
+          <!-- Cita 1 - Confirmada -->
+          <!-- <div class="appointment-card-new confirmed">
+            <div class="card-top">
+              <div class="time-info">
+                <span class="time">09:00 AM</span>
+                <span class="duration">30 min</span>
+              </div>
+              <span class="status-badge confirmed">Confirmada</span>
+            </div>
+
+            <div class="card-main">
+              <div class="pet-info">
+                <div class="pet-avatar">🐕</div>
+                <div class="pet-details">
+                  <h3>Max</h3>
+                  <p class="breed">Golden Retriever</p>
+                </div>
+              </div>
+
+              <div class="appointment-type">
+                <span class="type-icon">🩺</span>
+                <span class="type-text">Consulta General</span>
+              </div>
+            </div>
+
+            <div class="card-info">
+              <div class="info-row">
+                <span class="info-label">👤 Cliente:</span>
+                <span class="info-value">Carlos Martínez</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">👨‍⚕️ Doctor:</span>
+                <span class="info-value">Dr. Rivera</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">📞 Teléfono:</span>
+                <span class="info-value">+52 442 123 4567</span>
+              </div>
+            </div>
+
+            <div class="card-notes">📝 Control de peso y chequeo rutinario</div>
+
+            <div class="card-actions">
+              <button class="card-btn btn-primary-action">▶️ Iniciar</button>
+              <button class="card-btn btn-secondary-action">✏️</button>
+              <button class="card-btn btn-danger-action">❌</button>
+            </div>
+          </div> -->
+
+          <!-- Cita 2 - Pendiente -->
+          <!-- <div class="appointment-card-new pending">
+            <div class="card-top">
+              <div class="time-info">
+                <span class="time">10:00 AM</span>
+                <span class="duration">20 min</span>
+              </div>
+              <span class="status-badge pending">Pendiente</span>
+            </div>
+
+            <div class="card-main">
+              <div class="pet-info">
+                <div class="pet-avatar">🐈</div>
+                <div class="pet-details">
+                  <h3>Luna</h3>
+                  <p class="breed">Gato Persa</p>
+                </div>
+              </div>
+
+              <div class="appointment-type">
+                <span class="type-icon">💉</span>
+                <span class="type-text">Vacunación</span>
+              </div>
+            </div>
+
+            <div class="card-info">
+              <div class="info-row">
+                <span class="info-label">👤 Cliente:</span>
+                <span class="info-value">Ana García</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">👨‍⚕️ Doctor:</span>
+                <span class="info-value">Dr. Rivera</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">📞 Teléfono:</span>
+                <span class="info-value">+52 442 234 5678</span>
+              </div>
+            </div>
+
+            <div class="card-notes">📝 Vacuna antirrábica anual</div>
+
+            <div class="card-actions">
+              <button class="card-btn btn-success-action">✅ Confirmar</button>
+              <button class="card-btn btn-secondary-action">✏️</button>
+              <button class="card-btn btn-danger-action">❌</button>
+            </div>
+          </div> -->
+
+          <!-- Cita 3 - Confirmada -->
+          <!-- <div class="appointment-card-new confirmed">
+            <div class="card-top">
+              <div class="time-info">
+                <span class="time">11:00 AM</span>
+                <span class="duration">45 min</span>
+              </div>
+              <span class="status-badge confirmed">Confirmada</span>
+            </div>
+
+            <div class="card-main">
+              <div class="pet-info">
+                <div class="pet-avatar">🐕</div>
+                <div class="pet-details">
+                  <h3>Rocky</h3>
+                  <p class="breed">Bulldog</p>
+                </div>
+              </div>
+
+              <div class="appointment-type">
+                <span class="type-text">Revisión Post-operatoria</span>
+              </div>
+            </div>
+
+            <div class="card-info">
+              <div class="info-row">
+                <span class="info-label">👤 Cliente:</span>
+                <span class="info-value">Miguel Rodríguez</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">👨‍⚕️ Doctor:</span>
+                <span class="info-value">Dr. Rivera</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">📞 Teléfono:</span>
+                <span class="info-value">+52 442 345 6789</span>
+              </div>
+            </div>
+
+            <div class="card-notes">
+              📝 Revisión de sutura, control de cicatrización
+            </div>
+
+            <div class="card-actions">
+              <button class="card-btn btn-primary-action">▶️ Iniciar</button>
+              <button class="card-btn btn-secondary-action">✏️</button>
+              <button class="card-btn btn-danger-action">❌</button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal para Crear/Editar Cita -->
+    <div class="modal" id="clientModal">
+      <div class="modal-content modal-large">
+        <div class="modal-header">
+          <h2>Agendar Nueva Cita</h2>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cliente">Cliente *</label>
+                <select id="cliente" required>
+                  <option value="">Seleccionar cliente...</option>
+                  <option value="1">Carlos Martínez</option>
+                  <option value="2">Ana García</option>
+                  <option value="3">Miguel Rodríguez</option>
+                  <option value="4">Laura Sánchez</option>
+                  <option value="5">Roberto López</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mascota">Mascota *</label>
+                <select id="mascota" required>
+                  <option value="">Seleccionar mascota...</option>
+                  <option value="1">Max - Golden Retriever</option>
+                  <option value="2">Luna - Gato Persa</option>
+                  <option value="3">Rocky - Bulldog</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fecha">Fecha *</label>
+                <input type="date" id="fecha" required />
+              </div>
+              <div class="form-group">
+                <label for="hora">Hora *</label>
+                <input type="time" id="hora" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tipo">Tipo de Cita *</label>
+                <select id="tipo" required>
+                  <option value="">Seleccionar tipo...</option>
+                  <option value="consulta">🩺 Consulta General</option>
+                  <option value="vacunacion">💉 Vacunación</option>
+                  <option value="cirugia">✂️ Cirugía</option>
+                  <option value="revision">🔍 Revisión</option>
+                  <option value="emergencia">🚨 Emergencia</option>
+                  <option value="estetica">✨ Estética</option>
+                  <option value="desparasitacion">💊 Desparasitación</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="duracion">Duración (minutos) *</label>
+                <select id="duracion" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="15">15 minutos</option>
+                  <option value="30">30 minutos</option>
+                  <option value="45">45 minutos</option>
+                  <option value="60">1 hora</option>
+                  <option value="90">1.5 horas</option>
+                  <option value="120">2 horas</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="veterinario">Veterinario *</label>
+                <select id="veterinario" required>
+                  <option value="">Seleccionar veterinario...</option>
+                  <option value="1">Dr. Rivera</option>
+                  <option value="2">Dra. Martínez</option>
+                  <option value="3">Dr. González</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="motivo">Motivo de la Consulta</label>
+                <textarea
+                  id="motivo"
+                  rows="2"
+                  placeholder="Breve descripción del motivo de la cita..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="notas">Notas Adicionales</label>
+              <textarea
+                id="notas"
+                rows="3"
+                placeholder="Instrucciones especiales, preparación previa, etc..."
+              ></textarea>
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn-secondary">Cancelar</button>
+              <button type="submit" class="btn-primary">Agendar Cita</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/utils/validation.js"></script>
+    <script type="module" src="assets/js/citas.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+  </body>
+</html>

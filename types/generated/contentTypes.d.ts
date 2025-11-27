@@ -472,6 +472,7 @@ export interface ApiCitaCita extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    cliente: Schema.Attribute.Relation<'manyToOne', 'api::cliente.cliente'>;
     colaborador: Schema.Attribute.Relation<
       'manyToOne',
       'api::colaborador.colaborador'
@@ -483,6 +484,7 @@ export interface ApiCitaCita extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    duracion_minutos: Schema.Attribute.Integer;
     estado: Schema.Attribute.Enumeration<
       ['programada', 'en-curso', 'atendida', 'cancelada', 'no-asistio']
     > &
@@ -520,6 +522,7 @@ export interface ApiClienteCliente extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    citas: Schema.Attribute.Relation<'oneToMany', 'api::cita.cita'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
