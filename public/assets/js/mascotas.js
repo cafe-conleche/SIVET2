@@ -337,6 +337,10 @@ document.addEventListener("DOMContentLoaded", () => {
         mascotaData.data.cliente = duenoId;
       }
 
+      if (isEditMode && duenoId) {
+        mascotaData.data.cliente = duenoId;
+      }
+
       if (isEditMode) {
         // MODO EDICIÓN
         const mascotaId = form.getAttribute("data-mascota-id");
